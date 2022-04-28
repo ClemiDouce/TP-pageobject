@@ -16,4 +16,6 @@ def test__amazon():
     product_page = book_page.select_first_book_nouveautes()
     confirmation_page = product_page.add_to_cart()
     cart_page = confirmation_page.open_cart()
+    cart_page.set_quantity(2)
+    assert cart_page.get_quantity() == "2"
     sleep(2)
