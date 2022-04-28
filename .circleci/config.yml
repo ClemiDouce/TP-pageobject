@@ -6,24 +6,32 @@ orbs:
   # The python orb contains a set of prepackaged CircleCI configuration you can use repeatedly in your configuration files
   # Orb commands and jobs help you with common scripting around a language/tool
   # so you dont have to copy and paste it everywhere.
-  python: circleci/python@1.2
+  python: circleci/python@2.0.3
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build-and-test: 
+  build: 
     docker:
       - image: cimg/python:3.10
+      - image: cimg/node:16.13.1-browsers
     steps:
       - checkout
+      - run: mkdir test-reports
       - python/install-packages:
-          pkg-manager: pip
+          args: pytest selenium
+          pkg-manager: pipenv
       - run:
-          name: Run test
-          command: pytest
+          name: Download Selenium
+          command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+      - run:
+          name: Start Selenium
+          command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+          background: true
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  say-hello-workflow:
+  build_and_test:
     jobs:
-      - build-and-test
+      - build
+      - python/test
