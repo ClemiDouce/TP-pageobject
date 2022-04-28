@@ -15,3 +15,6 @@ class ProductLocator:
 
 class ConfirmationLocator:
     go_to_cart_button = (By.CSS_SELECTOR, "span#sw-gtc a.a-button-text")
+
+class CartLocator:
+    quantity_select = (By.CSS_SELECTOR, "select[name='quantity']")
