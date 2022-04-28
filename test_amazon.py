@@ -6,8 +6,8 @@ from amazon_pages.home_page import HomePage
 
 
 def test__amazon():
+    """ Go to book categorie, add first item to cart, change quantity to 2"""
     driver = webdriver.Chrome()
-    driver.get("http://amazon.fr/")
     home = HomePage(driver)
     home.accept_cookie()
     home.open_all_menu()
