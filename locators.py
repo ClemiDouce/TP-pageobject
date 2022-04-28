@@ -12,3 +12,6 @@ class BooksLocator:
 
 class ProductLocator:
     add_to_cart_button = (By.CSS_SELECTOR, "input#add-to-cart-button")
+
+class ConfirmationLocator:
+    go_to_cart_button = (By.CSS_SELECTOR, "span#sw-gtc a.a-button-text")
