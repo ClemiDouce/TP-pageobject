@@ -9,3 +9,6 @@ class HomeLocator:
 
 class BooksLocator:
     nouveaute_item = (By.CSS_SELECTOR, "div.octopus-best-seller-card li.octopus-pc-item")
+
+class ProductLocator:
+    add_to_cart_button = (By.CSS_SELECTOR, "input#add-to-cart-button")
