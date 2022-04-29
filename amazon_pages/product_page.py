@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from .base_page import BasePage
-
+import amazon_pages.confirmation_page as confirmation_page
 
 class ProductPage(BasePage):
     """ Page of a product"""
@@ -10,3 +10,4 @@ class ProductPage(BasePage):
     def add_to_cart(self):
         """ Add the product on page to cart"""
         self.wait_and_click(self.add_to_cart_button)
+        return confirmation_page.ConfirmationPage(self.driver)

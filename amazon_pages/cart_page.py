@@ -15,6 +15,7 @@ class CartPage(BasePage):
             self.wait.until(EC.visibility_of_element_located(self.quantity_select))
         )
         quantity_select_element.select_by_value(str(quantity))
+        return self
 
     def get_quantity(self):
         """ Get the quantity of the first item"""
