@@ -15,7 +15,7 @@ class TopBar(PageElement):
         self.wait_and_click(self.burger_menu)
 
     def open_book_category(self):
-        """Choose the book category on burger menu"""
+        """Choose the book_page category on burger menu"""
         self.wait_and_click(self.book_categorie)
         self.wait.until(EC.invisibility_of_element(self.book_categorie))
 
