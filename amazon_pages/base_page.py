@@ -16,3 +16,11 @@ class BasePage(PageElement):
     def accept_cookie(self):
         """ Click on Accept All on cookie modal"""
         self.wait_and_click(self.cookie_accept)
+
+    def search_product(self, text):
+        self.top_bar.search_product(text)
+
+    def open_all_book(self):
+        self.top_bar.open_all_menu()
+        self.top_bar.open_book_category()
+        self.top_bar.open_all_books()
