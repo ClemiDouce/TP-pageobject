@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 
-import amazon_pages.books_page as book_page
 from amazon_pages.page_element import PageElement
 from amazon_pages.top_bar import TopBar
 
@@ -27,4 +26,5 @@ class BasePage(PageElement):
         self.top_bar.open_all_menu()
         self.top_bar.open_book_category()
         self.top_bar.open_all_books()
-        return book_page.BooksPage(self.driver)
+        from .books_page import BooksPage
+        return BooksPage(self.driver)
