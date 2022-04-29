@@ -1,16 +1,18 @@
-from selenium.webdriver.support.wait import WebDriverWait as wait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
 
-class BasePage:
+from amazon_pages.page_element import PageElement
+from amazon_pages.top_bar import TopBar
+
+
+class BasePage(PageElement):
     """Base class for all pages"""
+
+    cookie_accept = (By.CSS_SELECTOR, "input#sp-cc-accept")
+
     def __init__(self, driver):
-        self.driver = driver
-        self.wait = wait(driver, 10)
+        super().__init__(driver)
+        self.top_bar = TopBar(driver)
 
-    def wait_and_click(self, by_locator):
-        """Wait for an element to be clickable and click on it"""
-        self.wait.until(EC.element_to_be_clickable(by_locator)).click()
-
-    def wait_and_read(self, by_locator):
-        """Wait for an element to appear and return his text"""
-        return self.wait.until(EC.presence_of_element_located(by_locator)).text
+    def accept_cookie(self):
+        """ Click on Accept All on cookie modal"""
+        self.wait_and_click(self.cookie_accept)
