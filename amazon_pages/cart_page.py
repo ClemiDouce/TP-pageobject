@@ -2,10 +2,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support import expected_conditions as EC
 
-from .base_page import BasePage
+import amazon_pages.base_page as base_page
 
 
-class CartPage(BasePage):
+class CartPage(base_page.BasePage):
     """ Page of cart"""
     quantity_select = (By.CSS_SELECTOR, "select[name='quantity']")
 
